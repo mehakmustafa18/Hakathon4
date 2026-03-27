@@ -1,0 +1,132 @@
+
+/* Footer Styling */
+.app-footer {
+  background-color: #000000; 
+  padding: 5rem 0 3rem 0;
+  margin-top: 5rem;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-main {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.footer-section h4 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #999999;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  font-family: 'Manrope', sans-serif;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-link {
+  width: 3rem;
+  height: 3rem;
+  background: #1A1A1A;
+  border: 1px solid #262626;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: #262626;
+  border-color: #333;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid #262626;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.footer-bottom p {
+  color: #999999;
+  font-size: 0.875rem;
+  font-family: 'Manrope', sans-serif;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 0;
+}
+
+.footer-legal a {
+  color: #999999;
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0 1.25rem;
+  border-right: 1px solid #262626;
+  font-family: 'Manrope', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.footer-legal a:first-child {
+  padding-left: 0;
+}
+
+.footer-legal a:hover {
+  color: #fff;
+}
