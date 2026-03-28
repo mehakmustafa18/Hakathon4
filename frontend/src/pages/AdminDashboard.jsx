@@ -7,6 +7,7 @@ import {
   FiMenu,
   FiX,
 } from "react-icons/fi";
+import "../styles/admin.css";
 import api from "../context/api";
 
 const AdminDashboard = () => {
