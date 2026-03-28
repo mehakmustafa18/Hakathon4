@@ -12,13 +12,17 @@ const AdminLayout = () => {
       <AdminSidebar
         key={sidebarOpen ? "open" : "closed"}
         className={sidebarOpen ? "open" : ""}
+        onClose={() => setSidebarOpen(false)}
       />
       <main className="admin-main">
         <button
           className="admin-sidebar-toggle md:hidden"
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+          onClick={() => {
+            alert("Hamburger clicked!");
+            setSidebarOpen(!sidebarOpen);
+          }}
         >
-          <FiMenu size={24} />
+          <FiMenu size={24} /> Menu
         </button>
         <Outlet />
       </main>

@@ -78,7 +78,7 @@ const Navbar = () => {
       </button>
 
       {/* Action Icons */}
-      <div className="navbar-actions">
+      <div className="navbar-actions hidden md:flex">
         <button className="navbar-action">
           <FiSearch size={22} />
         </button>

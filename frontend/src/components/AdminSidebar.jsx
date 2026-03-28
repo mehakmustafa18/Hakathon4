@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-import { FiLayout, FiUsers, FiVideo, FiLogOut } from "react-icons/fi";
+import { FiLayout, FiUsers, FiVideo, FiLogOut, FiX } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 
-const AdminSidebar = ({ className }) => {
+const AdminSidebar = ({ className, onClose }) => {
   const location = useLocation();
   const { logout } = useAuth();
 
@@ -14,6 +14,9 @@ const AdminSidebar = ({ className }) => {
 
   return (
     <div className={`admin-sidebar ${className}`}>
+      <button className="admin-sidebar-close md:hidden" onClick={onClose}>
+        <FiX size={24} />
+      </button>
       <Link to="/" className="admin-sidebar-logo">
         <div className="admin-sidebar-logo-icon">SV</div>
         <span className="admin-sidebar-logo-text">Admin Panel</span>
