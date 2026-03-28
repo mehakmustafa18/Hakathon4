@@ -45,7 +45,11 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-
+.wraper {
+  max-width: 1440px;
+  margin: 0 auto;
+  /* Aur koi styles yahan */
+}
 .container {
   max-width: 1400px;
   margin: 0 auto;
