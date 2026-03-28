@@ -35,6 +35,7 @@
   letter-spacing: -0.02em;
 }
 
+/* Desktop Links */
 .navbar-links {
   display: flex;
   align-items: center;
@@ -52,9 +53,38 @@
   transition: all var(--transition-smooth);
 }
 
-.navbar-link:hover, .navbar-link.active {
+.navbar-link:hover,
+.navbar-link.active {
   color: #fff;
   background: var(--brand-gray);
+}
+
+/* Mobile Menu Button */
+.navbar-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile Links */
+.navbar-links-mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+  padding: 1rem;
+  border-top: 1px solid var(--brand-gray);
+}
+
+.navbar-links-mobile.open {
+  display: flex;
 }
 
 .navbar-actions {
@@ -70,6 +100,28 @@
 
 .navbar-action:hover {
   color: var(--brand-red);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+  .navbar-menu-btn {
+    display: block;
+  }
+  .navbar-links-mobile {
+    display: none;
+  }
+  .navbar-links-mobile.open {
+    display: flex;
+  }
+  .navbar-actions {
+    gap: 1rem;
+  }
+  .navbar {
+    padding: 1rem var(--container-padding);
+  }
 }
 
 /* ── User / Profile Dropdown ── */
@@ -104,7 +156,7 @@
   background: var(--brand-dark, #0f0f0f);
   border: 1px solid var(--brand-gray);
   border-radius: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   padding: 0.5rem;
   z-index: 2000;
 }

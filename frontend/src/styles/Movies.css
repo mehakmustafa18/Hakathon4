@@ -18,6 +18,20 @@
   background-image: url("/movbg.png");
 }
 
+@media (max-width: 768px) {
+  .movies-hero {
+    margin: 0 2%;
+    padding: 2rem 2rem 1rem 2rem;
+    height: 80vh;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 0.875rem;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;

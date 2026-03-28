@@ -1,11 +1,11 @@
 :root {
   /* Brand Colors */
-  --brand-red: #E50000;
-  --brand-dark: #0F0F0F;
-  --brand-darker: #0A0A0A;
-  --brand-gray: #1A1A1A;
-  --brand-text: #BFBFBF;
-  --brand-light: #E6E6E6;
+  --brand-red: #e50000;
+  --brand-dark: #0f0f0f;
+  --brand-darker: #0a0a0a;
+  --brand-gray: #1a1a1a;
+  --brand-text: #bfbfbf;
+  --brand-light: #e6e6e6;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -16,8 +16,20 @@
   --container-padding: 4rem;
 
   /* Typography */
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
   --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 0.5rem;
+  }
 }
 
 * {
@@ -29,7 +41,7 @@
 body {
   background-color: #080808; /* Slightly lighter than pure black */
   color: #ffffff;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }

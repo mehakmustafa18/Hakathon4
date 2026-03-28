@@ -45,7 +45,12 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--brand-dark), rgba(15, 15, 15, 0.6), transparent);
+  background: linear-gradient(
+    to top,
+    var(--brand-dark),
+    rgba(15, 15, 15, 0.6),
+    transparent
+  );
 }
 
 .hero-overlay-dark {
@@ -63,6 +68,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 0.5rem;
+    padding-top: 30px;
+  }
+  .hero-logo-box {
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+  .hero-icon-play {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
 }
 
 .hero-logo-box {
@@ -109,8 +129,8 @@
 }
 
 .hero-title {
-  font-family: 'Manrope', sans-serif;
-  font-size: 32px; 
+  font-family: "Manrope", sans-serif;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 1rem;
   max-width: 60rem;
@@ -132,7 +152,7 @@
 }
 
 .hero-desc {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   color: #999999;
   font-size: 14px; /* Mobile fallback */
   font-weight: 400;
@@ -304,7 +324,7 @@
 }
 
 .card-footer span {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;
@@ -347,7 +367,7 @@
 }
 
 .device-card {
-  background: linear-gradient(135deg, #0F0F0F 0%, #0A0A0A 100%);
+  background: linear-gradient(135deg, #0f0f0f 0%, #0a0a0a 100%);
   padding: 2.5rem;
   border-radius: 0.75rem;
   border: 1px solid var(--brand-gray);
@@ -359,13 +379,17 @@
 }
 
 .device-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle at top right, rgba(229, 0, 0, 0.05), transparent 70%);
+  background: radial-gradient(
+    circle at top right,
+    rgba(229, 0, 0, 0.05),
+    transparent 70%
+  );
 }
 
 .device-card-header {
@@ -378,7 +402,7 @@
   width: 3.5rem;
   height: 3.5rem;
   background: #141414;
-  border: 1px solid #1F1F1F;
+  border: 1px solid #1f1f1f;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -388,7 +412,7 @@
 }
 
 .device-card h3 {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 150%;
@@ -397,7 +421,7 @@
 }
 
 .device-card p {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 400;
   font-size: 14px; /* Mobile fallback */
   line-height: 150%;
@@ -441,13 +465,18 @@
 }
 
 .faq-item::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, rgba(229, 0, 0, 0) 0%, rgba(229, 0, 0, 0.3) 50%, rgba(229, 0, 0, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(229, 0, 0, 0) 0%,
+    rgba(229, 0, 0, 0.3) 50%,
+    rgba(229, 0, 0, 0) 100%
+  );
 }
 
 /* Hide line for bottom items in columns */
@@ -469,7 +498,7 @@
 }
 
 .faq-number {
-  background: #1F1F1F;
+  background: #1f1f1f;
   border: 1px solid #262626;
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
@@ -511,12 +540,23 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .faq-item.active::after {
-  background: linear-gradient(90deg, rgba(229, 0, 0, 0) 0%, var(--brand-red) 50%, rgba(229, 0, 0, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(229, 0, 0, 0) 0%,
+    var(--brand-red) 50%,
+    rgba(229, 0, 0, 0) 100%
+  );
 }
 
 .faq-item.active .faq-question-row h3 {
@@ -545,8 +585,8 @@
 
 .billing-toggle {
   display: flex;
-  background: #0F0F0F;
-  border: 1px solid #1F1F1F;
+  background: #0f0f0f;
+  border: 1px solid #1f1f1f;
   padding: 0.5rem;
   border-radius: 0.75rem;
 }
@@ -563,7 +603,7 @@
 }
 
 .toggle-btn.active {
-  background: #1F1F1F;
+  background: #1f1f1f;
   color: #fff;
 }
 
@@ -580,7 +620,7 @@
 }
 
 .plan-card {
-  background: #1A1A1A;
+  background: #1a1a1a;
   border: 1px solid #262626;
   padding: 2rem;
   border-radius: 0.75rem;
@@ -606,7 +646,7 @@
   color: #999999;
   font-size: 16px;
   line-height: 150%;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 .plan-price {
@@ -618,14 +658,14 @@
   font-size: 32px;
   font-weight: 700;
   color: #fff;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 .plan-price .duration {
   color: #999999;
   font-size: 16px;
   margin-left: 0.4rem;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 .plan-actions {
@@ -644,7 +684,7 @@
 
 .plan-actions .btn-outline {
   background: #141414;
-  border: 1px solid #1F1F1F;
+  border: 1px solid #1f1f1f;
   color: #fff;
 }
 
