@@ -597,20 +597,8 @@
   z-index: 1001;
 }
 
-/* ─── Responsive ────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .admin-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .admin-charts-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* Sidebar responsive behavior */
 @media (max-width: 768px) {
-  .admin-sidebar {
-    display: none;
-  }
   .admin-hamburger {
     display: flex;
   }
@@ -637,6 +625,22 @@
     padding: 1rem;
     padding-top: 4rem; /* space for hamburger */
   }
+}
+/* ─── Responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    display: none;
+  }
+
   .admin-main {
     margin-left: 0;
     padding: 1.5rem;
