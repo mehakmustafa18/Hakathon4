@@ -15,6 +15,33 @@
   padding: 2.5rem 3rem;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding: 1rem;
+  }
+  .admin-main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  .admin-sidebar-toggle {
+    display: block;
+    background: var(--brand-gray);
+    border: none;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  .admin-sidebar.hidden {
+    display: none;
+  }
+}
+
 /* ─── Sidebar ───────────────────────────────────────────── */
 .admin-sidebar {
   width: 260px;
@@ -148,7 +175,10 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
 }
 
 .admin-header-btn:hover {
@@ -172,7 +202,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .admin-stat-card:hover {
@@ -203,10 +235,18 @@
   border-radius: 0.75rem;
 }
 
-.admin-stat-icon.blue { color: #3b82f6; }
-.admin-stat-icon.green { color: #22c55e; }
-.admin-stat-icon.purple { color: #a855f7; }
-.admin-stat-icon.red { color: var(--brand-red); }
+.admin-stat-icon.blue {
+  color: #3b82f6;
+}
+.admin-stat-icon.green {
+  color: #22c55e;
+}
+.admin-stat-icon.purple {
+  color: #a855f7;
+}
+.admin-stat-icon.red {
+  color: var(--brand-red);
+}
 
 /* ─── Chart Placeholder ─────────────────────────────────── */
 .admin-charts-grid {
@@ -299,8 +339,14 @@
   letter-spacing: 0.04em;
 }
 
-.admin-badge-admin { background: var(--brand-red); color: #fff; }
-.admin-badge-user { background: rgba(255, 255, 255, 0.08); color: var(--brand-text); }
+.admin-badge-admin {
+  background: var(--brand-red);
+  color: #fff;
+}
+.admin-badge-user {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--brand-text);
+}
 
 /* ─── Status Indicator ──────────────────────────────────── */
 .admin-status {
@@ -316,14 +362,30 @@
   border-radius: 50%;
 }
 
-.admin-status.active .admin-status-dot { background: #22c55e; }
-.admin-status.active { color: #22c55e; }
-.admin-status.blocked .admin-status-dot { background: #ef4444; }
-.admin-status.blocked { color: #ef4444; }
-.admin-status.visible .admin-status-dot { background: #22c55e; }
-.admin-status.visible { color: #22c55e; }
-.admin-status.hidden .admin-status-dot { background: #eab308; }
-.admin-status.hidden { color: #eab308; }
+.admin-status.active .admin-status-dot {
+  background: #22c55e;
+}
+.admin-status.active {
+  color: #22c55e;
+}
+.admin-status.blocked .admin-status-dot {
+  background: #ef4444;
+}
+.admin-status.blocked {
+  color: #ef4444;
+}
+.admin-status.visible .admin-status-dot {
+  background: #22c55e;
+}
+.admin-status.visible {
+  color: #22c55e;
+}
+.admin-status.hidden .admin-status-dot {
+  background: #eab308;
+}
+.admin-status.hidden {
+  color: #eab308;
+}
 
 /* ─── Action Buttons ────────────────────────────────────── */
 .admin-action-btn {
@@ -471,7 +533,9 @@
   color: #fff;
   outline: none;
   font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .admin-modal-input:focus,
@@ -519,12 +583,23 @@
 
 /* ─── Responsive ────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .admin-stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .admin-charts-grid { grid-template-columns: 1fr; }
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-charts-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .admin-sidebar { display: none; }
-  .admin-main { margin-left: 0; padding: 1.5rem; }
-  .admin-stats-grid { grid-template-columns: 1fr; }
+  .admin-sidebar {
+    display: none;
+  }
+  .admin-main {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

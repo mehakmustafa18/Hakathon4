@@ -420,18 +420,7 @@ const MovieDetails = () => {
               </h2>
               <button
                 onClick={() => setShowReviewForm(!showReviewForm)}
-                style={{
-                  background: "#1A1A1A",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  padding: "0.5rem 1rem",
-                  borderRadius: "0.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  cursor: "pointer",
-                  fontSize: "0.85rem",
-                }}
+                className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer text-sm transition-colors"
               >
                 <FiPlus size={16} /> Add Your Review
               </button>

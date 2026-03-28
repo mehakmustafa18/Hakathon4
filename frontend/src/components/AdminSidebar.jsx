@@ -1,19 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
-import { FiLayout, FiUsers, FiVideo, FiLogOut } from 'react-icons/fi';
-import { useAuth } from '../context/AuthContext';
+import { Link, useLocation } from "react-router-dom";
+import { FiLayout, FiUsers, FiVideo, FiLogOut } from "react-icons/fi";
+import { useAuth } from "../context/AuthContext";
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ className }) => {
   const location = useLocation();
   const { logout } = useAuth();
 
   const menuItems = [
-    { name: 'Dashboard', path: '/admin', icon: FiLayout },
-    { name: 'User Management', path: '/admin/users', icon: FiUsers },
-    { name: 'Video Management', path: '/admin/videos', icon: FiVideo },
+    { name: "Dashboard", path: "/admin", icon: FiLayout },
+    { name: "User Management", path: "/admin/users", icon: FiUsers },
+    { name: "Video Management", path: "/admin/videos", icon: FiVideo },
   ];
 
   return (
-    <div className="admin-sidebar">
+    <div className={`admin-sidebar ${className}`}>
       <Link to="/" className="admin-sidebar-logo">
         <div className="admin-sidebar-logo-icon">SV</div>
         <span className="admin-sidebar-logo-text">Admin Panel</span>
@@ -24,7 +24,7 @@ const AdminSidebar = () => {
           <Link
             key={item.path}
             to={item.path}
-            className={`admin-sidebar-link ${location.pathname === item.path ? 'active' : ''}`}
+            className={`admin-sidebar-link ${location.pathname === item.path ? "active" : ""}`}
           >
             <item.icon size={20} />
             <span>{item.name}</span>
