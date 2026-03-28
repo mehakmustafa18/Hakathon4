@@ -9,7 +9,10 @@ const AdminLayout = () => {
 
   return (
     <div className="admin-layout">
-      <AdminSidebar className={sidebarOpen ? "" : "hidden"} />
+      <AdminSidebar
+        key={sidebarOpen ? "open" : "closed"}
+        className={sidebarOpen ? "open" : ""}
+      />
       <main className="admin-main">
         <button
           className="admin-sidebar-toggle md:hidden"
