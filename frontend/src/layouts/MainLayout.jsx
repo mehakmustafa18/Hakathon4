@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="wraper flex flex-col min-h-screen bg-brand-dark selection:bg-brand-red selection:text-white">
+    <div className="flex flex-col min-h-screen bg-brand-dark selection:bg-brand-red selection:text-white">
       <Navbar />
       <main className="flex-grow">
         <Outlet />

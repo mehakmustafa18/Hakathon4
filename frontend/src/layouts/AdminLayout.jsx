@@ -8,7 +8,7 @@ const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className=" wraper admin-layout">
+    <div className="admin-layout">
       <AdminSidebar className={sidebarOpen ? "" : "hidden"} />
       <main className="admin-main">
         <button
