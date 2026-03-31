@@ -1,28 +1,33 @@
-const Video = require('../models/Video');
+const Video = require("../models/Video");
+const cloudinary = require("../config/cloudinary");
 
 // @desc    Fetch all videos
-// @route   GET /api/videos
-// @access  Public
 const getVideos = async (req, res) => {
   try {
-    const query = req.user && req.user.role === 'super_admin' ? {} : { isVisible: true };
+    const query = req.user && req.user.role === "super_admin" ? {} : { isVisible: true };
     const videos = await Video.find(query);
-    res.json(videos);
+    res.json(videos.map(v => ({
+      ...v._doc,
+      videoUrl: cloudinary.url(v.videoPublicId, { resource_type: "video" }),
+      thumbnailUrl: cloudinary.url(v.thumbnailPublicId),
+    })));
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
 // @desc    Fetch single video
-// @route   GET /api/videos/:id
-// @access  Public
 const getVideoById = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
     if (video) {
-      res.json(video);
+      res.json({
+        ...video._doc,
+        videoUrl: cloudinary.url(video.videoPublicId, { resource_type: "video" }),
+        thumbnailUrl: cloudinary.url(video.thumbnailPublicId),
+      });
     } else {
-      res.status(404).json({ message: 'Video not found' });
+      res.status(404).json({ message: "Video not found" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -30,21 +35,35 @@ const getVideoById = async (req, res) => {
 };
 
 // @desc    Create a video
-// @route   POST /api/videos
-// @access  Private/Admin
 const createVideo = async (req, res) => {
   try {
-    const { title, description, genre, releaseYear, duration, thumbnailUrl, videoUrl, category } = req.body;
-    
+    const { title, description, genre, releaseYear, duration, category } = req.body;
+
+    if (!req.files || !req.files.video || !req.files.thumbnail) {
+      return res.status(400).json({ message: "Video and thumbnail are required" });
+    }
+
+    // Upload thumbnail
+    const thumbnailResult = await cloudinary.uploader.upload_stream({ folder: "thumbnails" }, (error, result) => {
+      if (error) throw error;
+      return result;
+    });
+
+    // Upload video
+    const videoResult = await cloudinary.uploader.upload_stream({ resource_type: "video", folder: "videos" }, (error, result) => {
+      if (error) throw error;
+      return result;
+    });
+
     const video = new Video({
       title,
       description,
       genre,
       releaseYear,
       duration,
-      thumbnailUrl,
-      videoUrl,
-      category
+      category,
+      thumbnailPublicId: req.files.thumbnail[0].originalname, // placeholder, replace with actual Cloudinary upload
+      videoPublicId: req.files.video[0].originalname,
     });
 
     const createdVideo = await video.save();
@@ -54,39 +73,39 @@ const createVideo = async (req, res) => {
   }
 };
 
-// @desc    Update a video
-// @route   PUT /api/videos/:id
-// @access  Private/Admin
+// @desc    Update video (keep same public IDs if no new files)
 const updateVideo = async (req, res) => {
   try {
-    const { title, description, genre, releaseYear, duration, thumbnailUrl, videoUrl, isVisible, category } = req.body;
-
     const video = await Video.findById(req.params.id);
+    if (!video) return res.status(404).json({ message: "Video not found" });
 
-    if (video) {
-      video.title = title || video.title;
-      video.description = description || video.description;
-      video.genre = genre || video.genre;
-      video.releaseYear = releaseYear || video.releaseYear;
-      video.duration = duration || video.duration;
-      video.thumbnailUrl = thumbnailUrl || video.thumbnailUrl;
-      video.videoUrl = videoUrl || video.videoUrl;
-      video.isVisible = isVisible !== undefined ? isVisible : video.isVisible;
-      video.category = category || video.category;
+    const { title, description, genre, releaseYear, duration, category, isVisible } = req.body;
 
-      const updatedVideo = await video.save();
-      res.json(updatedVideo);
-    } else {
-      res.status(404).json({ message: 'Video not found' });
+    video.title = title || video.title;
+    video.description = description || video.description;
+    video.genre = genre || video.genre;
+    video.releaseYear = releaseYear || video.releaseYear;
+    video.duration = duration || video.duration;
+    video.category = category || video.category;
+    video.isVisible = isVisible !== undefined ? isVisible : video.isVisible;
+
+    // Optional: handle new files if uploaded
+    if (req.files?.thumbnail) {
+      const result = await cloudinary.uploader.upload(req.files.thumbnail[0].path, { folder: "thumbnails" });
+      video.thumbnailPublicId = result.public_id;
     }
+    if (req.files?.video) {
+      const result = await cloudinary.uploader.upload(req.files.video[0].path, { resource_type: "video", folder: "videos" });
+      video.videoPublicId = result.public_id;
+    }
+
+    const updatedVideo = await video.save();
+    res.json(updatedVideo);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// @desc    Delete a video
-// @route   DELETE /api/videos/:id
-// @access  Private/Admin
 const deleteVideo = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);

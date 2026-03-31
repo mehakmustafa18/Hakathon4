@@ -1,19 +1,33 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getVideos, getVideoById, createVideo, updateVideo, deleteVideo, toggleVisibility, addReview, deleteReview } = require('../controllers/videoController');
-const { protect, admin } = require('../middleware/authMiddleware');
+const { protect, admin } = require("../middleware/authMiddleware");
+const upload = require("../config/multer");
 
-router.route('/')
+const {
+  getVideos,
+  getVideoById,
+  createVideo,
+  updateVideo,
+  deleteVideo,
+  toggleVisibility,
+  addReview,
+  deleteReview,
+} = require("../controllers/videoController");
+
+// Video CRUD
+router.route("/")
   .get(getVideos)
-  .post(protect, admin, createVideo);
+  .post(protect, admin, upload.fields([{ name: "video" }, { name: "thumbnail" }]), createVideo);
 
-router.route('/:id')
+router.route("/:id")
   .get(getVideoById)
-  .put(protect, admin, updateVideo)
+  .put(protect, admin, upload.fields([{ name: "video" }, { name: "thumbnail" }]), updateVideo)
   .delete(protect, admin, deleteVideo);
 
-router.patch('/:id/visibility', protect, admin, toggleVisibility);
-router.post('/:id/reviews', addReview);
-router.delete('/:id/reviews/:reviewId', protect, admin, deleteReview);
+router.patch("/:id/visibility", protect, admin, toggleVisibility);
+
+// Reviews
+router.post("/:id/reviews", addReview);
+router.delete("/:id/reviews/:reviewId", protect, admin, deleteReview);
 
 module.exports = router;
